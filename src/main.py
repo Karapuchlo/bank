@@ -3,7 +3,7 @@ from src.services import get_top_cashback_categories, get_potential_savings
 from src.reports import generate_category_expenses_report, generate_weekday_expenses_report
 
 if __name__ == '__main__':
-    file_path = 'data/operations.xlsx'
+    file_path = '../data/operations.xlsx'
 
     # Использование функций
     main_page_data = generate_main_page(file_path)
@@ -12,5 +12,5 @@ if __name__ == '__main__':
     top_cashback_categories = get_top_cashback_categories(file_path)
     potential_savings = get_potential_savings(file_path)
 
-    generate_category_expenses_report(file_path, 'reports/category_expenses.xlsx')
-    generate_weekday_expenses_report(file_path, 'reports/weekday_expenses.xlsx')
+    generate_category_expenses_report(file_path, '../reports/category_expenses.xlsx')
+    generate_weekday_expenses_report(file_path, '../reports/weekday_expenses.xlsx')
