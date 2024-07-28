@@ -1,16 +1,18 @@
-# This is a sample Python script.
+from src.views import generate_main_page, generate_events_page
+from src.services import get_top_cashback_categories, get_potential_savings
+from src.reports import generate_category_expenses_report, generate_weekday_expenses_report
+import os
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    file_path = '../data/operations.xlsx'
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    # Использование функций
+    os.makedirs('reports', exist_ok=True)
+    main_page_data = generate_main_page(file_path)
+    events_page_data = generate_events_page(file_path, category='groceries')
+
+    top_cashback_categories = get_top_cashback_categories(file_path)
+    potential_savings = get_potential_savings(file_path)
+
+    generate_category_expenses_report(file_path, '../reports/category_expenses.xlsx')
+    generate_weekday_expenses_report(file_path, '../reports/weekday_expenses.xlsx')
